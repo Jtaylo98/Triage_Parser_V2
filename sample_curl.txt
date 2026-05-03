@@ -1,0 +1,30 @@
+# Sample curl request for Loveable wiring
+
+curl -X POST https://your-api.com/parse \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_BACKEND_SECRET" \
+  -d '{"text": "72-year-old female with sudden onset severe headache, worst of her life, neck stiffness, and vomiting. GCS 13. BP 185/110."}'
+
+# Sample response:
+{
+  "chief_complaint": "sudden severe headache",
+  "duration": "sudden onset",
+  "associated_symptoms": [
+    "severe headache",
+    "neck stiffness",
+    "vomiting",
+    "altered consciousness",
+    "hypertension"
+  ],
+  "suspected_urgency": "High",
+  "confidence": 95,
+  "recommended_action": "Activate trauma protocol immediately — rule out subarachnoid hemorrhage",
+  "flagged_keywords": ["worst headache of my life", "neck stiffness", "altered consciousness"],
+  "pushed_to_openemr": false,
+  "encounter_id": "a3f2c1d4-89ab-4e12-b456-426614174000",
+  "timestamp": "2026-05-02T14:32:01.004512+00:00"
+}
+
+# Health check:
+curl https://your-api.com/health
+# → { "status": "ok" }
